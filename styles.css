@@ -1,0 +1,128 @@
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /** Source - https://stackoverflow.com/a/33948325 
+    Posted by marseiRetrieved 2026-02-06, 
+    License - CC BY-SA 3.0**/
+
+    background-color: rgb(0, 2, 53);
+    background-image:
+        radial-gradient(white, rgba(255, 255, 255, .2) 2px, transparent 20px),
+        radial-gradient(white, rgba(255, 255, 255, .15) 1px, transparent 15px),
+        radial-gradient(white, rgba(255, 255, 255, .1) 2px, transparent 33px),
+        radial-gradient(rgba(255, 255, 255, .4), rgba(255, 255, 255, .1) 2px, transparent 40px);
+    background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
+    background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;   
+}
+
+.lexend-font {
+    font-family: "Lexend", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+#main_div {
+    text-align: center;
+}
+
+h1,
+button {
+    font-family: 'Lexend', sans-serif;
+}
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: 50px;
+    color: #fb9ade;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#yes_button,
+#no_button {
+    font-size: 1.5rem;
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+#yes_button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+#yes_button:hover {
+    background-color: #45a049;
+}
+
+#no_button {
+    background-color: #af4c4c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+#no_button:hover {
+    background-color: #a04545;
+}
+
+#main_div {
+    background-color: #e8e3e3;
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /** Source - https://stackoverflow.com/a/33948325 
+    Posted by marseiRetrieved 2026-02-06, 
+    License - CC BY-SA 3.0**/
+
+    background-color: rgb(42, 0, 79);
+    background-image:
+        radial-gradient(white, rgba(255, 255, 255, .2) 2px, transparent 400px),
+        radial-gradient(white, rgba(255, 255, 255, .15) 1px, transparent 300px),
+        radial-gradient(white, rgba(255, 255, 255, .1) 2px, transparent 400px),
+        radial-gradient(rgba(255, 255, 255, .4), rgba(255, 255, 255, .1) 2px, transparent 300px);
+    background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
+    background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
+
+}
+
+/* Heart-shaped moon */
+.heart-moon {
+    position: absolute;
+    top: 10%;
+    right: 10%;
+    width: 100px;
+    height: 90px;
+}
+
+.heart-moon::before,
+.heart-moon::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 52px;
+    height: 80px;
+    background: #ffe5f5;
+    border-radius: 50px 50px 0 0;
+    transform: rotate(-45deg);
+    transform-origin: 0 55%;
+    box-shadow: 
+        0 0 20px rgba(255, 229, 245, 0.8),
+        0 0 40px rgba(255, 229, 245, 0.6),
+        0 0 60px rgba(255, 229, 245, 0.4),
+        0 0 80px rgba(255, 229, 245, 0.2);
+}
+
+.heart-moon::after {
+    left: 51px;
+    transform: rotate(45deg);
+    transform-origin: 100% 55%;
+}
