@@ -18,32 +18,37 @@ yes_btn.addEventListener("click", function () {
     no_btn.style.display = "none";
 });
 
-no_btn.addEventListener("click", function () {
-
-    if (click_count < 6) {
-        yesBtnSize += 0.3;
-        yes_btn.style.fontSize = yesBtnSize + "rem";
-        yes_btn.style.padding = (yesBtnSize * 6.67) + "px " + (yesBtnSize * 13.33) + "px";
-        label.textContent = labels[click_count];
-        click_count++;
-    } 
-    else if (click_count < labels.length - 1) {
-        no_btn.style.position = "absolute";
-        no_btn.style.left = Math.random() * 80 + "%";
-        no_btn.style.top = Math.random() * 80 + "%";
-        label.textContent = labels[click_count];
-        click_count++;
-    }
-    else if (click_count === labels.length - 1) {
-        label.textContent = labels[click_count];
-        no_btn.style.position = "absolute";
-        no_btn.style.left = Math.random() * 80 + "%";
-        no_btn.style.top = Math.random() * 80 + "%";
-        click_count++;
-    }
-    else {
-        alert("Ok, let's start over...");
-        location.reload();
-    }
-   
+no_btn.addEventListener("mouseover", function () {
+    no_btn.style.position = "absolute";
+    
+    var rect = no_btn.getBoundingClientRect();
+    var btnCenterX = rect.left + rect.width / 2;
+    var btnCenterY = rect.top + rect.height / 2;
+    
+    document.addEventListener("mousemove", function moveAway(e) {
+        var mouseX = e.clientX;
+        var mouseY = e.clientY;
+        
+        var deltaX = btnCenterX - mouseX;
+        var deltaY = btnCenterY - mouseY;
+        var distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+        
+        if (distance < 150) {
+            var angle = Math.atan2(deltaY, deltaX);
+            var moveDistance = 150 - distance;
+            
+            var newLeft = rect.left + Math.cos(angle) * moveDistance;
+            var newTop = rect.top + Math.sin(angle) * moveDistance;
+            
+            newLeft = Math.max(0, Math.min(window.innerWidth - rect.width, newLeft));
+            newTop = Math.max(0, Math.min(window.innerHeight - rect.height, newTop));
+            
+            no_btn.style.left = newLeft + "px";
+            no_btn.style.top = newTop + "px";
+            
+            rect = no_btn.getBoundingClientRect();
+            btnCenterX = rect.left + rect.width / 2;
+            btnCenterY = rect.top + rect.height / 2;
+        }
+    });
 });
