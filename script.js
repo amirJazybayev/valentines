@@ -12,7 +12,7 @@ const labels = ["Please?", "Pleeeease?", "Are you sure?", "Are you really sure?"
 
 yes_btn.addEventListener("click", function () {
     var img = pic.querySelector("img");
-    img.src = "rosecat.jpg";
+    img.src = "yescat.png";
     label.textContent = "Yay!";
     yes_btn.style.display = "none";
     no_btn.style.display = "none";
@@ -40,8 +40,19 @@ no_btn.addEventListener("mouseover", function () {
             var newLeft = rect.left + Math.cos(angle) * moveDistance;
             var newTop = rect.top + Math.sin(angle) * moveDistance;
             
-            newLeft = Math.max(0, Math.min(window.innerWidth - rect.width, newLeft));
-            newTop = Math.max(0, Math.min(window.innerHeight - rect.height, newTop));
+            var borderThreshold = 50;
+            var tooCloseToLeft = newLeft < borderThreshold;
+            var tooCloseToRight = newLeft > window.innerWidth - rect.width - borderThreshold;
+            var tooCloseToTop = newTop < borderThreshold;
+            var tooCloseToBottom = newTop > window.innerHeight - rect.height - borderThreshold;
+            
+            if (tooCloseToLeft || tooCloseToRight || tooCloseToTop || tooCloseToBottom) {
+                newLeft = Math.random() * (window.innerWidth - rect.width - 100) + 50;
+                newTop = Math.random() * (window.innerHeight - rect.height - 100) + 50;
+            } else {
+                newLeft = Math.max(0, Math.min(window.innerWidth - rect.width, newLeft));
+                newTop = Math.max(0, Math.min(window.innerHeight - rect.height, newTop));
+            }
             
             no_btn.style.left = newLeft + "px";
             no_btn.style.top = newTop + "px";
