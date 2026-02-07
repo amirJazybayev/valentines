@@ -126,3 +126,8 @@ h1 {
     transform: rotate(45deg);
     transform-origin: 100% 55%;
 }
+
+img {
+    max-width: 300px;
+    max-height: 300px;
+}
